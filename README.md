@@ -8,10 +8,10 @@
 ## 🇫🇷 À propos / 🇬🇧 About
 
 🇫🇷 Ce repo documente ma progression technique à travers des CTF et challenges de sécurité.  
-Chaque writeup détaille mon raisonnement, pas seulement les commandes — l'objectif est de comprendre les mécanismes sous-jacents, pas de collectionner des flags.
+Chaque writeup détaille mon raisonnement, pas seulement les commandes. L'objectif est de comprendre les mécanismes sous-jacents, pas de collectionner des flags.
 
 🇬🇧 This repo documents my technical progression through CTF challenges and security exercises.  
-Each writeup details my reasoning process, not just the commands — the goal is to understand underlying mechanisms, not to collect flags.
+Each writeup details my reasoning process, not just the commands. The goal is to understand underlying mechanisms, not to collect flags.
 
 ---
 
@@ -35,9 +35,7 @@ Each writeup details my reasoning process, not just the commands — the goal is
 
 | # | Challenge | Difficulté | Outils | Writeup |
 |---|-----------|------------|--------|---------|
-| 12 | Docker Layers | ★★☆☆☆ | openssl, tar | [→](rootme/forensics/challenge-12-docker-layers.md) |
-| 11 | _à venir_ | | | |
-| 10 | _à venir_ | | | |
+| 6 | Docker Layers | ★★☆☆☆ | openssl, tar | [→](rootme/forensics/challenge-6-docker-layers.md) |
 
 #### 🌐 Web
 
@@ -61,14 +59,14 @@ Each writeup details my reasoning process, not just the commands — the goal is
 
 ## 📈 Progression
 
-🇫🇷 Pratique quotidienne — objectif OSCP à 12-15 mois.  
-🇬🇧 Daily practice — OSCP target within 12-15 months.
+🇫🇷 Pratique quotidienne, objectif OSCP à 12-15 mois.  
+🇬🇧 Daily practice, OSCP target within 12-15 months.
 
 ```
 Forensics     ███░░░░░░░░░  en progression
 Web           ░░░░░░░░░░░░  prochain focus
 Network       ░░░░░░░░░░░░  prochain focus
-Active Directory ░░░░░░░░░░  prochain focus
+Active Directory ░░░░░░░░░░░░  prochain focus
 ```
 
 ---
