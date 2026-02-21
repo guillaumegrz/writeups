@@ -1,4 +1,4 @@
-# CTF Writeups — Guillaume Grzywacz
+# CTF Writeups — Guillaume G.
 
 > 🇫🇷 Ingénieur informatique en transition active vers la cybersécurité offensive.  
 > 🇬🇧 Software engineer actively transitioning into offensive cybersecurity.
@@ -23,7 +23,7 @@ Each writeup details my reasoning process, not just the commands — the goal is
 | Password Cracking | John the Ripper, Hashcat |
 | Network Analysis | Wireshark, tcpdump |
 | Web | Burp Suite, sqlmap |
-| OS | Kali Linux, Windows |
+| OS | Ubuntu, Windows |
 
 ---
 
@@ -65,9 +65,9 @@ Each writeup details my reasoning process, not just the commands — the goal is
 🇬🇧 Daily practice — OSCP target within 12-15 months.
 
 ```
-Forensics     ████████░░░░  en progression
-Web           █████░░░░░░░  bases acquises
-Network       ████░░░░░░░░  en cours
+Forensics     ███░░░░░░░░░  en progression
+Web           ░░░░░░░░░░░░  prochain focus
+Network       ░░░░░░░░░░░░  prochain focus
 Active Directory ░░░░░░░░░░  prochain focus
 ```
 
@@ -75,7 +75,7 @@ Active Directory ░░░░░░░░░░  prochain focus
 
 ## 📬 Contact
 
-- 🔗 [LinkedIn](https://linkedin.com/in/guillaumegrz)
+- 🔗 [LinkedIn](https://www.linkedin.com/in/guillaume-g-999021177/)
 - 🐙 [GitHub](https://github.com/guillaumegrz)
 
 ---
