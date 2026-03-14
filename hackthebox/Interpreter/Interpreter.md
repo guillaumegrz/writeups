@@ -4,17 +4,6 @@
 **OS :** Linux  
 **Date :** 9 march 2026
 
-### Table of contents
-- [[#1. Recon|1. Recon]]
-- [[#2. Enumeration|2. Enumeration]]
-- [[#3. Exploitation|3. Exploitation]]
-- [[#4. Privilege Escalation|4. Privilege Escalation]]
-- [[#5. Lessons Learned|5. Lessons Learned]]
-- [[#6. Technical notes|6. Technical notes]]
-	- [[#6. Technical notes#`ip a | grep tun0`|`ip a | grep tun0`]]
-	- [[#6. Technical notes#`nc -lnvp 9001`|`nc -lnvp 9001`]]
-	- [[#6. Technical notes#nc shell and PTY, TTY upgrading.|nc shell and PTY, TTY upgrading.]]
-
 
 ---
 
@@ -70,7 +59,7 @@ Lets search exploits or CVE for that current mirth 2021 version
 
 https://horizon3.ai/attack-research/disclosures/nextgen-mirth-connect-remote-code-execution/
 
-Remote Code execution vulnerability found in 2023 and affecting all anterior versions. Our version is apparently from 2021 so it applies.
+Remote Code execution vulnerability found in 2023 and affecting all prior versions. Our version is apparently from 2021 so it applies.
 In the mirth connect administrator file, we can see that the version is 4.4.0 so its vulnerable to this exploit. 
 
 "This is an easily exploitable, unauthenticated remote code execution vulnerability. Attackers would most likely exploit this vulnerability for initial access or to compromise sensitive healthcare data."
@@ -110,11 +99,6 @@ We can send and receive commands in a specific shell with the nc command at the 
 When navigating in the folders and files, I found a mirth properties in the conf folder. It contains the user and pass to connect to the database.
 
 ![Database credentials](images/mirthpass.png)
-
-
-we connect to it with mysql and print the tables.
-
-demander pourquoi le shell nc normal ne renvoie pas la commande du mysql, pourquoi on doit fait spawn un meilleur shell en python.
 
 
 When trying to connect to MySQL, I didn't have anything returned in the terminal :
@@ -159,7 +143,7 @@ The hashcat format : `sha256:[number of iterations]:[salt_in_base64]:[hash_in_ba
 
 sha256:600000:u/+LBBOUnac=:YshQbDDqCAzy21EdK5OfZBJD1Ne4rXa1VgP5CzLd8Ps=
 
-Let's store this in a mirth_hash.txt file and run the hashcat command with a dictionnary attack using rockyou.txt file database.
+Let's store this in a mirth_hash.txt file and run the hashcat command with a dictionary attack using rockyou.txt file database.
 
 ![Hashcat command](images/hashcat.png)
 
@@ -185,7 +169,7 @@ doing a ps aux on the machine to see the running processes, we see two python sc
 
 ![Python script running as root](images/python-proc-root.png)
 
-One python script contains this function which runs an eval as root. With an intensive search apparently it can be used to execute remote code in the payload, because it simply extracts whats in the {} without checking it. A bit like the script into the exploit PoC I used for mirth connect. Instead of java, it would be done in a python script. It will allow privilege escalation because this script runs as root. I currently do not have the technical knowledge to execute this and I relied too much on AI to help me which I didn't like. I learned a LOT already from this room.
+One python script contains this function which runs an eval as root. With an intensive search apparently it can be used to execute remote code in the payload, because it simply extracts whats in the {} without checking it. A bit like the script into the exploit PoC I used for mirth connect. Instead of java, it would be done in a python script. It will allow privilege escalation because this script runs as root. The full exploitation of this vector requires deeper knowledge of Python injection techniques... to be completed
 
 ![Eval script](images/eval-script.png)
 
