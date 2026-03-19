@@ -1,82 +1,54 @@
-# CTF Writeups — Guillaume G.
+# Guillaume Grazioli — Offensive Security
 
-> 🇫🇷 Ingénieur informatique en transition active vers la cybersécurité offensive.  
-> 🇬🇧 Software engineer actively transitioning into offensive cybersecurity.
-
----
-
-## 🇫🇷 À propos / 🇬🇧 About
-
-🇫🇷 Ce repo documente ma progression technique à travers des CTF et challenges de sécurité.  
-Chaque writeup détaille mon raisonnement, pas seulement les commandes. L'objectif est de comprendre les mécanismes sous-jacents, pas de collectionner des flags.
-
-🇬🇧 This repo documents my technical progression through CTF challenges and security exercises.  
-Each writeup details my reasoning process, not just the commands. The goal is to understand underlying mechanisms, not to collect flags.
+🇫🇷 Software engineering background | Now fully focused on **offensive cybersecurity**  
+🇬🇧 French / Spanish / English  
+📍 Available from May 2025 — France / Spain / Remote
 
 ---
 
-## 🛠️ Skills & Tools
-
-| Domain | Tools |
-|--------|-------|
-| Forensics | Volatility 2/3, Autopsy, strings, binwalk |
-| Password Cracking | John the Ripper, Hashcat |
-| Network Analysis | Wireshark, tcpdump |
-| Web | Burp Suite, sqlmap |
-| OS | Ubuntu, Windows |
-
----
-
-## 📂 Writeups
-
-### RootMe
-
-#### 🔬 Forensics
-
-| # | Challenge | Difficulté | Outils | Writeup |
-|---|-----------|------------|--------|---------|
-| 6 | Docker Layers | ★★☆☆☆ | openssl, tar | [→](rootme/forensics/challenge-6-docker-layers.md) |
-
-#### 🌐 Web
-
-| # | Challenge | Difficulté | Outils | Writeup |
-|---|-----------|------------|--------|---------|
-| — | _à venir_ | | | |
-
-### HackTheBox
-
-| Machine | OS | Difficulté | Writeup |
-|---------|----|------------|---------|
-| _à venir_ | | | |
-
-### OverTheWire
-
-| Wargame | Niveau | Writeup |
-|---------|--------|---------|
-| _à venir_ | | |
-
----
-
-## 📈 Progression
-
-🇫🇷 Pratique quotidienne, objectif OSCP à 12-15 mois.  
-🇬🇧 Daily practice, OSCP target within 12-15 months.
+## 🛠️ Current Stack
 
 ```
-Forensics     ███░░░░░░░░░  en progression
-Web           ░░░░░░░░░░░░  prochain focus
-Network       ░░░░░░░░░░░░  prochain focus
-Active Directory ░░░░░░░░░░░░  prochain focus
+Forensics    Volatility 2/3 · strings · binwalk · Autopsy
+Cracking     John the Ripper · Hashcat
+Network      Wireshark · tcpdump · nmap · netcat
+Web          Burp Suite · sqlmap · manual testing
+OS           Kali Linux · Ubuntu · Windows
+CTF          RootMe · HackTheBox
 ```
 
 ---
 
-## 📬 Contact
+## 📊 Progress
 
-- 🔗 [LinkedIn](https://www.linkedin.com/in/guillaume-g-999021177/)
-- 🐙 [GitHub](https://github.com/guillaumegrz)
+### 🟢 HackTheBox
+*Could not fetch data*
+
+### 🔴 Root-Me
+| Stat | Value |
+|------|-------|
+| 🏆 Score | N/A |
+
+
+| 📌 Last Challenge | N/A (N/A) |
+
+[→ View RootMe Profile](https://www.root-me.org/gr4z__)
+
+### 📝 Latest Writeup
+**[Interpreter](https://github.com/guillaumegrz/writeups/blob/main/hackthebox/Interpreter/Interpreter.md)** — 2026-03-14
+
+Total writeups published : **4**
 
 ---
 
-*🇫🇷 Writeups publiés uniquement après résolution personnelle complète.*  
-*🇬🇧 Writeups published only after full independent resolution.*
+## 📂 Writeups Repository
+
+| Platform | Path |
+|----------|------|
+| HackTheBox Starting Point | [hackthebox/starting-point/](hackthebox/starting-point/) |
+| HackTheBox Machines | [hackthebox/](hackthebox/) |
+| RootMe | [rootme/](rootme/) |
+
+---
+
+*Last updated : 2026-03-19 14:26 UTC by GitHub Actions*
