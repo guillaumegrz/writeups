@@ -211,7 +211,16 @@ var
 
 ```
 
-now lets search for the flags. Looking at env variables
+The initial access gave me a root shell on a system that seemed isolated.
+This machine is a closed Docker env hosting the Flowise, not a complete linux machine.
+```bash
+/var/opt # ps aux      
+PID   USER     TIME  COMMAND
+    1 root      0:33 node /usr/local/bin/flowise start
+
+```
+
+Knowing that, I proceeded to look at the Docker environment variables. It's common practice but risky one to store secrets such as configs or password in there.
 
 ```bash
 / # env
@@ -246,8 +255,8 @@ JWT_REFRESH_TOKEN_SECRET=AABBCCDDAABBCCDDAABBCCDDAABBCCDDAABBCCDD
 SMTP_USER=test
 ```
 
-Interesting password in env SMTP_PASSWORD=`r04D!!_R4ge`
-lets try to connect to ben's machine using ssh
+Within these variables I found an Interesting password in env SMTP_PASSWORD=`r04D!!_R4ge`
+Considering that admins often reuse passwords, I tried an ssh connection on the host machine as user 'ben'.
 
 ```bash
 > ssh ben@10.129.31.63
