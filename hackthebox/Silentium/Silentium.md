@@ -30,8 +30,7 @@ PORT     STATE    SERVICE
 
 ```
 
-After running an nmap of the machine we can see some open ports. 
-The only new thing from the starting point machines is the "polestar" and "maybe-veritas" services. I do not know what do they mean but it could be an opening gate.
+After running an nmap of the machine we can see some open ports.
 
 
 ```bash
@@ -177,7 +176,7 @@ Connection received on 10.129.31.40 43829
 ```bash
 curl -X POST http://staging.silentium.htb/api/v1/node-load-method/customMCP \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer hWp_8jB76zi0VtKSr2d9TfGK1fm6NuNPg1uA-8FsUJc" \
+  -H "Authorization: Bearer <<TOKEN>>" \
   -d '{
     "loadMethod": "listActions",
     "inputs": {
@@ -452,10 +451,35 @@ The remediation would be to never make a web service run as root and update Gogs
 
 ## 5. Lessons Learned
 
-practiced tools like ffuf, nmap once again gaining some experience.Used intuition to gain access to Ben's account. Found the Flowise current version and associated vulnerabilty, CVE. used a PoC to gain a reverse shell on the machine, exploring the env variables to get ben's password.
-
-Then, learned how to scan ports on the machine and discovered Gogs ports, used port forwarding to gain access to it. Discovered that Gogs ran as root which is an alarming sign.
-
-Found another vulnerability and CVE associated to Gogs and executed the script to gain once again access to the machine as root.
+- Practiced recurrent tools such as nmap, ffuf, ssh.
+- Found a CVE on Flowise and used a corresponding PoC to get a reverse shell on a Docker env.
+- Finding passwords in env variables
+- Connecting as SSH on a machine, port forwarding, finding local services running (ss command)
+- Finding vulnerability in a running service as root
+- Using another PoC script to gain root privilege on the machine
 
 ## 6. Technical Notes
+
+1. SSH Port Forwarding (Local Tunneling)
+The Concept:
+SSH Port Forwarding (specifically Local Port Forwarding) allows you to bridge a connection between your local machine and a service running on the target server that is only accessible via its loopback interface (127.0.0.1).
+Technical Reality on Silentium:
+During the reconnaissance phase, running ss -ltpn on the target revealed that Gogs was listening on 127.0.0.1:3001. This means the service was "binded" to the localhost, making it invisible to an external Nmap scan and unreachable directly via the target's public IP.
+The Solution:
+By running ssh -L 3001:127.0.0.1:3001 ben@silentium.htb, we created an encrypted tunnel.
+
+    How it works: Any traffic sent to localhost:3001 on our attack machine is encapsulated by the SSH client, sent through the existing SSH tunnel, and "dropped" by the SSH server directly into the target's local port 3001.
+    The Result: The Gogs service sees the request coming from 127.0.0.1 (the SSH process) and accepts the connection, allowing us to access the web interface from our local browser.
+
+2. Gogs Symlink Exploitation (CVE-2025-8110)
+The Concept:
+This vulnerability is a Path Traversal flaw that occurs when a Git service (Gogs) fails to properly validate the destination of symbolic links when updating repository contents via its API.
+The Exploit Workflow:
+
+    Symlink Creation: We first push a repository containing a Symbolic Link (a shortcut) named malicious_link that points to the internal Git configuration file: .git/config.
+    API Abuse: We use the Gogs API to "edit" the content of malicious_link. Because of the vulnerability, the server doesn't update the link itself but instead follows the link and writes our controlled content directly into the real .git/config file.
+    Config Poisoning: We inject the sshCommand parameter into the Git config. This parameter tells Git to execute a specific system command whenever it performs a network-related Git operation.
+    RCE Trigger: We set sshCommand to a Reverse Shell payload. When the server triggers a Git action, it reads the poisoned config and executes our shell.
+
+The Outcome:
+Since the Gogs service was configured to run as the root user (as identified in app.ini), the injected command is executed with the highest privileges, granting an immediate root shell on the host system.
