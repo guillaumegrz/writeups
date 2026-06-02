@@ -1,7 +1,9 @@
 # Guillaume Grazioli — Offensive Security
 
 🇫🇷 Software engineering background | Now fully focused on **offensive cybersecurity** | DFIR / forensic / infra pentest
+
 🇬🇧 French / Spanish / English  
+
 📍 Available from May 2026 — France / Spain / Remote
 
 ---
