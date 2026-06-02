@@ -1,8 +1,8 @@
 # Guillaume Grazioli — Offensive Security
 
-🇫🇷 Software engineering background | Now fully focused on **offensive cybersecurity**  
+🇫🇷 Software engineering background | Now fully focused on **offensive cybersecurity** | DFIR / forensic / infra pentest
 🇬🇧 French / Spanish / English  
-📍 Available from May 2025 — France / Spain / Remote
+📍 Available from May 2026 — France / Spain / Remote
 
 ---
 
@@ -22,22 +22,21 @@ CTF          RootMe · HackTheBox
 ## 📊 Progress
 
 ### 🟢 HackTheBox
-*Could not fetch data*
+https://app.hackthebox.com/users/3081565?tab=activity
 
 ### 🔴 Root-Me
-| Stat | Value |
-|------|-------|
-| 🏆 Score | N/A |
-
-
-| 📌 Last Challenge | N/A (N/A) |
-
 [→ View RootMe Profile](https://www.root-me.org/gr4z__)
 
-### 📝 Latest Writeup
-**[Interpreter](https://github.com/guillaumegrz/writeups/blob/main/hackthebox/Interpreter/Interpreter.md)** — 2026-03-14
+### 📝 Selected Write-ups : 
 
-Total writeups published : **4**
+[Forensic - File recovery](rootme/forensics/challenge-12-file-recovery.md)
+[Forensic - Docker Layers](rootme/forensics/challenge-6-docker-layers.md)
+[Forensic - Log Analysis](rootme/forensics/challenge-6-log-analysis.md)
+
+[Pentest HTB - Interpreter](hackthebox/Interpreter/Interpreter.md)
+
+
+Total writeups published : **18**
 
 ---
 
