@@ -245,7 +245,8 @@ I could do it manually but it will be very long and prone to errors, so I create
 
 Here the goal is to open the pcap file, analyse the time frame between two ICMP requests, and analyse if the current second of the ICMP request is odd or even, and reconstructing the morse string. It is pretty straightforward since I had access to all the info in Ghidra to reconstruct the morse dict.
 
-Please find the script at [[icmp_morse.py]]
+Please find the script at [icmp_morse.py](./icmp_morse.py)
+
 # Result
 
 ```bash
